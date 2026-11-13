@@ -117,14 +117,14 @@ export const LoginPage = () => {
 
       {/* Error Alert */}
       {(errorMessage || authError) && (
-        <div className="mb-5 p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-start gap-2.5 text-xs text-rose-300">
+        <div className="mb-5 p-3.5 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-start gap-2.5 text-xs text-rose-300 animate-in fade-in">
           <AlertCircle size={16} className="shrink-0 text-rose-400 mt-0.5" />
-          <span>{errorMessage || authError}</span>
+          <span className="leading-relaxed">{errorMessage || authError}</span>
         </div>
       )}
 
       {step === 'phone' ? (
-        <div className="space-y-6">
+        <div className="flex flex-col gap-5">
           <PhoneNumberInput
             phoneNumber={phoneNumber}
             onChange={setPhoneNumber}
@@ -132,20 +132,22 @@ export const LoginPage = () => {
             loading={loading}
           />
 
-          <div className="relative flex items-center justify-center">
-            <div className="border-t border-[#2A2A2D] w-full" />
-            <span className="bg-[#141416] px-3 text-xs text-neutral-500 font-medium uppercase tracking-wider absolute">
+          {/* Clean bulletproof divider */}
+          <div className="flex items-center gap-3 my-1">
+            <div className="h-px bg-[#26262B] flex-1" />
+            <span className="text-[11px] font-bold uppercase tracking-widest text-neutral-500 px-1">
               or
             </span>
+            <div className="h-px bg-[#26262B] flex-1" />
           </div>
 
           <GoogleSignInButton onClick={handleGoogleClick} loading={loading} />
 
-          <p className="text-center text-xs text-neutral-400">
+          <p className="text-center text-xs text-neutral-400 mt-1">
             Don't have an account?{' '}
             <Link
               to="/register"
-              className="text-[#C6F432] font-semibold hover:underline"
+              className="text-[#C6F432] font-bold hover:underline ml-1"
             >
               Sign up for free
             </Link>

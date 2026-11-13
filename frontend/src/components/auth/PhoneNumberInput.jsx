@@ -21,7 +21,6 @@ export const PhoneNumberInput = ({
   const [selectedCountry, setSelectedCountry] = useState(COUNTRY_CODES[0]);
 
   const handleNumberChange = (e) => {
-    // Only allow numbers
     const cleanNumber = e.target.value.replace(/\D/g, '');
     onChange(cleanNumber);
   };
@@ -35,23 +34,24 @@ export const PhoneNumberInput = ({
 
   return (
     <form onSubmit={handleFormSubmit} className="w-full flex flex-col gap-4">
-      <div>
-        <label className="block text-xs font-medium text-neutral-400 mb-2">
-          Phone Number
+      <div className="flex flex-col gap-1.5">
+        <label className="text-xs font-semibold text-neutral-300">
+          Mobile Number
         </label>
-        <div className="flex items-center gap-2">
+        
+        <div className="flex items-center gap-2.5">
           {/* Country Code Dropdown */}
-          <div className="relative">
+          <div className="relative shrink-0">
             <select
               value={selectedCountry.code}
               onChange={(e) => {
                 const found = COUNTRY_CODES.find((c) => c.code === e.target.value);
                 if (found) setSelectedCountry(found);
               }}
-              className="appearance-none bg-[#1A1A1D] border border-[#333336] focus:border-[#C6F432] text-white text-sm rounded-xl py-3 pl-3 pr-8 outline-none cursor-pointer"
+              className="appearance-none bg-[#1A1A1E] border border-[#2F2F36] hover:border-[#42424B] focus:border-[#C6F432] text-white text-sm font-medium rounded-2xl py-3 pl-3.5 pr-8 outline-none cursor-pointer transition-colors shadow-inner"
             >
               {COUNTRY_CODES.map((c, i) => (
-                <option key={`${c.code}-${i}`} value={c.code} className="bg-[#1A1A1D] text-white">
+                <option key={`${c.code}-${i}`} value={c.code} className="bg-[#1A1A1E] text-white">
                   {c.flag} {c.code}
                 </option>
               ))}
@@ -64,17 +64,17 @@ export const PhoneNumberInput = ({
 
           {/* Number Input */}
           <div className="relative flex-1">
-            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-500">
-              <Phone size={18} />
+            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-500 pointer-events-none">
+              <Phone size={17} />
             </div>
             <input
               type="tel"
               value={phoneNumber}
               onChange={handleNumberChange}
-              placeholder="Enter mobile number"
+              placeholder="Enter 10-digit number"
               maxLength={15}
               disabled={loading}
-              className="w-full bg-[#1A1A1D] border border-[#333336] focus:border-[#C6F432] text-white placeholder-neutral-500 text-sm rounded-xl py-3 pl-10 pr-4 outline-none tracking-wide transition-all"
+              className="w-full bg-[#1A1A1E] border border-[#2F2F36] hover:border-[#42424B] focus:border-[#C6F432] focus:ring-2 focus:ring-[#C6F432]/20 text-white placeholder-neutral-500 text-sm font-medium rounded-2xl py-3 pl-10 pr-4 outline-none tracking-wide transition-all shadow-inner"
             />
           </div>
         </div>
@@ -83,7 +83,7 @@ export const PhoneNumberInput = ({
       <button
         type="submit"
         disabled={loading || !phoneNumber || phoneNumber.length < 7}
-        className="w-full py-3.5 px-6 rounded-xl font-bold text-sm bg-[#C6F432] text-black hover:bg-[#b5e028] disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-[#C6F432]/20 flex items-center justify-center gap-2 cursor-pointer"
+        className="w-full py-3.5 px-6 rounded-2xl font-bold text-sm bg-[#C6F432] text-black hover:bg-[#b8e82a] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none transition-all shadow-[0_4px_20px_rgba(198,244,50,0.25)] flex items-center justify-center gap-2 cursor-pointer mt-1"
       >
         {loading ? (
           <span className="flex items-center gap-2">

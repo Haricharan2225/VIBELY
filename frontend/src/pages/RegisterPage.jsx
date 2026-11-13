@@ -105,29 +105,29 @@ export const RegisterPage = () => {
       <div id="recaptcha-register-container" />
 
       {(errorMessage || authError) && (
-        <div className="mb-5 p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-start gap-2.5 text-xs text-rose-300">
+        <div className="mb-5 p-3.5 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-start gap-2.5 text-xs text-rose-300 animate-in fade-in">
           <AlertCircle size={16} className="shrink-0 text-rose-400 mt-0.5" />
-          <span>{errorMessage || authError}</span>
+          <span className="leading-relaxed">{errorMessage || authError}</span>
         </div>
       )}
 
       {step === 'phone' ? (
-        <div className="space-y-5">
+        <div className="flex flex-col gap-5">
           {/* Optional Display Name */}
-          <div>
-            <label className="block text-xs font-medium text-neutral-400 mb-2">
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-semibold text-neutral-300">
               Your Name (Optional)
             </label>
             <div className="relative">
-              <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-500">
-                <User size={18} />
+              <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-500 pointer-events-none">
+                <User size={17} />
               </div>
               <input
                 type="text"
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
-                placeholder="How should we call you?"
-                className="w-full bg-[#1A1A1D] border border-[#333336] focus:border-[#C6F432] text-white placeholder-neutral-500 text-sm rounded-xl py-3 pl-10 pr-4 outline-none transition-all"
+                placeholder="What should we call you?"
+                className="w-full bg-[#1A1A1E] border border-[#2F2F36] hover:border-[#42424B] focus:border-[#C6F432] focus:ring-2 focus:ring-[#C6F432]/20 text-white placeholder-neutral-500 text-sm font-medium rounded-2xl py-3 pl-10 pr-4 outline-none transition-all shadow-inner"
               />
             </div>
           </div>
@@ -139,11 +139,12 @@ export const RegisterPage = () => {
             loading={loading}
           />
 
-          <div className="relative flex items-center justify-center pt-2">
-            <div className="border-t border-[#2A2A2D] w-full" />
-            <span className="bg-[#141416] px-3 text-xs text-neutral-500 font-medium uppercase tracking-wider absolute">
+          <div className="flex items-center gap-3 my-1">
+            <div className="h-px bg-[#26262B] flex-1" />
+            <span className="text-[11px] font-bold uppercase tracking-widest text-neutral-500 px-1">
               or
             </span>
+            <div className="h-px bg-[#26262B] flex-1" />
           </div>
 
           <GoogleSignInButton
@@ -153,7 +154,7 @@ export const RegisterPage = () => {
           />
 
           {/* Perks list */}
-          <div className="pt-2 border-t border-[#222226] flex items-center justify-around text-[11px] text-neutral-400 font-medium">
+          <div className="py-2.5 border-t border-[#222226] flex items-center justify-around text-[11px] text-neutral-400 font-medium">
             <span className="flex items-center gap-1">
               <Sparkles size={12} className="text-[#C6F432]" /> Ad-free vibes
             </span>
@@ -167,9 +168,9 @@ export const RegisterPage = () => {
             </span>
           </div>
 
-          <p className="text-center text-xs text-neutral-400 pt-2">
+          <p className="text-center text-xs text-neutral-400">
             Already have an account?{' '}
-            <Link to="/login" className="text-[#C6F432] font-semibold hover:underline">
+            <Link to="/login" className="text-[#C6F432] font-bold hover:underline ml-1">
               Log in
             </Link>
           </p>
