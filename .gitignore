@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Environment variables — NEVER commit secrets
+.env
+.env.local
+.env.production
+.env.staging
+
+# Build outputs
+frontend/dist/
+backend/dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+
+# Firebase service account keys — NEVER commit
+**/serviceAccountKey.json
+**/firebase-adminsdk*.json

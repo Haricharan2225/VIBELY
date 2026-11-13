@@ -1,0 +1,18 @@
+/* Theme variables and helper classes for VIBELY */
+
+:root {
+  --theme-main-bg: #0B0B0C;
+  --theme-main-primary: #C6F432;
+  --theme-main-surface: #1A1A1D;
+  --theme-main-surface-hover: #2A2A2D;
+  --theme-main-border: #333336;
+
+  --theme-together-bg: #14213D;
+  --theme-together-primary: #FF6B5B;
+  --theme-together-surface: #F4EDE0;
+  --theme-together-border: #2A3A5D;
+}
+
+.safe-area-bottom {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+}
